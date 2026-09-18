@@ -1,544 +1,386 @@
-const photographerWhatsApp = "59995254792";
+/* =====================================================
+   CM CREATIVE SHOTS
+   BOOKING SYSTEM
+===================================================== */
+
+
+/* ================= MOBILE MENU ================= */
+
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+
+menuToggle.addEventListener("click", () => {
+
+    navMenu.classList.toggle("open");
+
+    const icon = menuToggle.querySelector("i");
+
+    if (navMenu.classList.contains("open")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+    } else {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+    }
+
+});
+
+
+/* Close menu after clicking a link */
+
+document.querySelectorAll("nav a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navMenu.classList.remove("open");
+
+        const icon = menuToggle.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    });
+
+});
+
+
+/* ================= DATE ================= */
+
+const dateInput = document.getElementById("date");
+
+/* Prevent customers from selecting a date in the past */
+
+const today = new Date();
+
+const year = today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, "0");
+const day = String(today.getDate()).padStart(2, "0");
+
+dateInput.min = `${year}-${month}-${day}`;
+
+
+/* ================= TIME ================= */
+
+const timeButtons = document.querySelectorAll(".time-choice");
+
+const selectedTime = document.getElementById("selectedTime");
+
+const otherTimeBox = document.getElementById("otherTimeBox");
+const otherTime = document.getElementById("otherTime");
+
+
+timeButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        /* Remove selected from all time buttons */
+
+        timeButtons.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        /* Select clicked button */
+
+        button.classList.add("selected");
+
+        const value = button.dataset.value;
+
+        selectedTime.value = value;
+
+
+        /* OTHER */
+
+        if (value === "OTHER") {
+
+            otherTimeBox.classList.add("show");
+
+            otherTime.required = true;
+
+            otherTime.focus();
+
+        } else {
+
+            otherTimeBox.classList.remove("show");
+
+            otherTime.required = false;
+
+            otherTime.value = "";
+
+        }
+
+    });
+
+});
+
+
+/* ================= SESSION TYPE ================= */
+
+const typeButtons = document.querySelectorAll(".type-choice");
+
+const selectedType = document.getElementById("selectedType");
+
+const otherEventBox = document.getElementById("otherEventBox");
+const otherEvent = document.getElementById("otherEvent");
+
+
+typeButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        /* Remove selected */
+
+        typeButtons.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        /* Select */
+
+        button.classList.add("selected");
+
+        const value = button.dataset.value;
+
+        selectedType.value = value;
+
+
+        /* OTHER EVENT */
+
+        if (value === "OTHER EVENT") {
+
+            otherEventBox.classList.add("show");
+
+            otherEvent.required = true;
+
+            otherEvent.focus();
+
+        } else {
+
+            otherEventBox.classList.remove("show");
+
+            otherEvent.required = false;
+
+            otherEvent.value = "";
+
+        }
+
+    });
+
+});
+
+
+/* ================= NUMBER OF PEOPLE ================= */
+
+const peopleButtons = document.querySelectorAll(".people-choice");
+
+const selectedPeople = document.getElementById("selectedPeople");
+
+
+peopleButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        peopleButtons.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+
+        selectedPeople.value = button.dataset.value;
+
+    });
+
+});
+
+
+/* ================= PAYMENT ================= */
+
+const paymentButtons = document.querySelectorAll(".payment-choice");
+
+const selectedPayment = document.getElementById("selectedPayment");
+
+
+paymentButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        paymentButtons.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+
+        selectedPayment.value = button.dataset.value;
+
+    });
+
+});
+
+
+/* ================= FORM ================= */
 
 const bookingForm = document.getElementById("bookingForm");
 
-const bookingDateInput = document.getElementById("date");
-const dateButton = document.getElementById("dateButton");
 
-const timeOptions = document.querySelectorAll(".time-option");
-const eventOptions = document.querySelectorAll(".event-option");
-const paymentOptions = document.querySelectorAll(".payment-option");
+bookingForm.addEventListener("submit", function(event) {
 
-const selectedTime = document.getElementById("selectedTime");
-const selectedEvent = document.getElementById("selectedEvent");
-const selectedPayment = document.getElementById("selectedPayment");
-
-const customTimeWrapper = document.getElementById("customTimeWrapper");
-const customTime = document.getElementById("customTime");
-
-const otherEventWrapper = document.getElementById("otherEventWrapper");
-const otherEvent = document.getElementById("otherEvent");
-
-const minusButton =
-    document.getElementById("minusButton") ||
-    document.getElementById("minusPeople");
-
-const plusButton =
-    document.getElementById("plusButton") ||
-    document.getElementById("plusPeople");
-
-const peopleNumber = document.getElementById("peopleNumber");
-const numberOfPeople = document.getElementById("numberOfPeople");
+    event.preventDefault();
 
 
+    /* Basic validation */
 
-/* =========================================
-   DATE
-========================================= */
+    if (!selectedTime.value) {
 
-if (bookingDateInput) {
+        alert("Please select a time.");
 
-    const today = new Date();
+        return;
 
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
-
-    bookingDateInput.min = `${year}-${month}-${day}`;
+    }
 
 
-    bookingDateInput.addEventListener("change", () => {
+    if (!selectedType.value) {
 
-        if (!bookingDateInput.value) return;
+        alert("Please select the session type.");
 
-        const selectedDate =
-            new Date(bookingDateInput.value + "T00:00:00");
+        return;
 
-        const formattedDate =
-            selectedDate.toLocaleDateString("en-US", {
+    }
+
+
+    if (!selectedPeople.value) {
+
+        alert("Please select the number of people.");
+
+        return;
+
+    }
+
+
+    if (!selectedPayment.value) {
+
+        alert("Please select a payment method.");
+
+        return;
+
+    }
+
+
+    /* ================= GET DATA ================= */
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const location =
+        document.getElementById("location").value.trim();
+
+    const date =
+        document.getElementById("date").value;
+
+
+    /* Time */
+
+    let finalTime = selectedTime.value;
+
+    if (selectedTime.value === "OTHER") {
+
+        finalTime =
+            otherTime.value.trim();
+
+    }
+
+
+    /* Session type */
+
+    let finalType = selectedType.value;
+
+    if (selectedType.value === "OTHER EVENT") {
+
+        finalType =
+            otherEvent.value.trim();
+
+    }
+
+
+    /* ================= FORMAT DATE ================= */
+
+    let formattedDate = date;
+
+    if (date) {
+
+        const dateObject = new Date(date + "T00:00:00");
+
+        formattedDate = dateObject.toLocaleDateString(
+            "en-US",
+            {
                 weekday: "long",
+                year: "numeric",
                 month: "long",
-                day: "numeric",
-                year: "numeric"
-            });
-
-        if (dateButton) {
-
-            dateButton.textContent = formattedDate;
-
-            dateButton.classList.add("selected");
-
-        }
-
-    });
-
-}
-
-
-
-/* =========================================
-   TIME
-========================================= */
-
-timeOptions.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-        timeOptions.forEach((item) => {
-            item.classList.remove("selected");
-        });
-
-        button.classList.add("selected");
-
-        const time = button.dataset.time;
-
-        if (selectedTime) {
-            selectedTime.value = time;
-        }
-
-
-        if (time === "OTHER") {
-
-            if (customTimeWrapper) {
-                customTimeWrapper.classList.remove("hidden-field");
+                day: "numeric"
             }
+        );
 
-        } else {
-
-            if (customTimeWrapper) {
-                customTimeWrapper.classList.add("hidden-field");
-            }
-
-            if (customTime) {
-                customTime.value = "";
-            }
-
-        }
-
-    });
-
-});
-
-
-
-/* =========================================
-   EVENT / TYPE OF PHOTOSHOOT
-========================================= */
-
-eventOptions.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-        eventOptions.forEach((item) => {
-            item.classList.remove("selected");
-        });
-
-        button.classList.add("selected");
-
-        const eventType = button.dataset.event;
-
-        if (selectedEvent) {
-            selectedEvent.value = eventType;
-        }
-
-
-        if (eventType === "Other Event") {
-
-            if (otherEventWrapper) {
-                otherEventWrapper.classList.remove("hidden-field");
-            }
-
-        } else {
-
-            if (otherEventWrapper) {
-                otherEventWrapper.classList.add("hidden-field");
-            }
-
-            if (otherEvent) {
-                otherEvent.value = "";
-            }
-
-        }
-
-    });
-
-});
-
-
-
-/* =========================================
-   PAYMENT
-========================================= */
-
-paymentOptions.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-        paymentOptions.forEach((item) => {
-            item.classList.remove("selected");
-        });
-
-        button.classList.add("selected");
-
-        const payment = button.dataset.payment;
-
-        if (selectedPayment) {
-            selectedPayment.value = payment;
-        }
-
-    });
-
-});
-
-
-
-/* =========================================
-   NUMBER OF PEOPLE
-========================================= */
-
-let people = 1;
-
-
-function updatePeople() {
-
-    if (people < 1) {
-        people = 1;
-    }
-
-    if (people > 100) {
-        people = 100;
     }
 
 
-    if (peopleNumber) {
-        peopleNumber.textContent = people;
-    }
+    /* ================= WHATSAPP MESSAGE ================= */
 
+    const message =
 
-    if (numberOfPeople) {
-        numberOfPeople.value = people;
-    }
+`📸 *CM CREATIVE SHOTS — NEW BOOKING*
 
-}
+━━━━━━━━━━━━━━━━━━━━
 
+👤 *CLIENT INFORMATION*
 
-if (minusButton) {
+*Full Name:*
+${name}
 
-    minusButton.addEventListener("click", () => {
-
-        people--;
-
-        updatePeople();
-
-    });
-
-}
-
-
-if (plusButton) {
-
-    plusButton.addEventListener("click", () => {
-
-        people++;
-
-        updatePeople();
-
-    });
-
-}
-
-
-updatePeople();
-
-
-
-/* =========================================
-   SMOOTH SCROLL
-========================================= */
-
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-
-    link.addEventListener("click", (event) => {
-
-        const targetId = link.getAttribute("href");
-
-        if (!targetId || targetId === "#") return;
-
-        const target = document.querySelector(targetId);
-
-        if (!target) return;
-
-        event.preventDefault();
-
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-
-        const mobileMenu =
-            document.getElementById("mobileMenu");
-
-        if (mobileMenu) {
-            mobileMenu.classList.remove("active");
-        }
-
-    });
-
-});
-
-
-
-/* =========================================
-   MOBILE MENU
-========================================= */
-
-const menuButton =
-    document.getElementById("menuButton");
-
-const mobileMenu =
-    document.getElementById("mobileMenu");
-
-
-if (menuButton && mobileMenu) {
-
-    menuButton.addEventListener("click", () => {
-
-        mobileMenu.classList.toggle("active");
-
-    });
-
-}
-
-
-
-/* =========================================
-   BOOKING → WHATSAPP
-========================================= */
-
-if (bookingForm) {
-
-    bookingForm.addEventListener("submit", (event) => {
-
-        event.preventDefault();
-
-
-        /* REQUIRED CHECKS */
-
-        if (!selectedTime || !selectedTime.value) {
-
-            alert("Please select a time.");
-
-            return;
-
-        }
-
-
-        if (!selectedEvent || !selectedEvent.value) {
-
-            alert("Please select the type of photoshoot.");
-
-            return;
-
-        }
-
-
-        if (!selectedPayment || !selectedPayment.value) {
-
-            alert("Please select a payment method.");
-
-            return;
-
-        }
-
-
-        if (!bookingDateInput || !bookingDateInput.value) {
-
-            alert("Please select a date.");
-
-            return;
-
-        }
-
-
-
-        /* GET FORM VALUES */
-
-        const fullName =
-            document.getElementById("fullName")?.value.trim() || "";
-
-        const phone =
-            document.getElementById("phone")?.value.trim() || "";
-
-        const location =
-            document.getElementById("location")?.value.trim() || "";
-
-        const extraMessage =
-            document.getElementById("extraMessage")?.value.trim() || "";
-
-
-
-        /* DATE */
-
-        const selectedDate =
-            new Date(bookingDateInput.value + "T00:00:00");
-
-        const formattedDate =
-            selectedDate.toLocaleDateString("en-US", {
-                weekday: "long",
-                month: "long",
-                day: "numeric",
-                year: "numeric"
-            });
-
-
-
-        /* TIME */
-
-        let finalTime = selectedTime.value;
-
-        if (
-            selectedTime.value === "OTHER" &&
-            customTime &&
-            customTime.value.trim()
-        ) {
-
-            finalTime = customTime.value.trim();
-
-        }
-
-
-
-        /* EVENT */
-
-        let finalEvent = selectedEvent.value;
-
-        if (
-            selectedEvent.value === "Other Event" &&
-            otherEvent &&
-            otherEvent.value.trim()
-        ) {
-
-            finalEvent =
-                "Other Event - " +
-                otherEvent.value.trim();
-
-        }
-
-
-
-        /* PEOPLE */
-
-        const finalPeople =
-            numberOfPeople?.value ||
-            peopleNumber?.textContent ||
-            "1";
-
-
-
-        /* =====================================
-           WHATSAPP MESSAGE
-        ====================================== */
-
-        const message =
-`CM CREATIVE SHOTS
-BOOKING REQUEST
-
-
-━━━━━━━━━━━━━━━━━━
-
-👤 NOMBER: 
-${fullName}
-
-📱 NUMBER: 
+*Phone Number:*
 ${phone}
 
-📍 LOCATION:
+*Location:*
 ${location}
 
-📅 DIA: 
+━━━━━━━━━━━━━━━━━━━━
+
+📅 *BOOKING DETAILS*
+
+*Date:*
 ${formattedDate}
 
-⏰ ORA: 
+*Time:*
 ${finalTime}
 
-👥 KUANTU HENDE: 
-${finalPeople}
+*Session Type:*
+${finalType}
 
-📸 TYPE OF PHOTOSHOOT: 
-${finalEvent}
+*Number of People:*
+${selectedPeople.value}
 
-💳 PAGO: 
+━━━━━━━━━━━━━━━━━━━━
+
+💳 *PAYMENT METHOD*
+
 ${selectedPayment.value}
 
-📝 ALGU OTRO: 
-${extraMessage || "N/A"}
+━━━━━━━━━━━━━━━━━━━━
 
-━━━━━━━━━━━━━━━━━━
+Please contact me to confirm the booking and provide the next steps.
 
-DANKII!!`;
-
+Thank you for choosing *CM CreativeShots*. 📸`;
 
 
-        /* =====================================
-           OPEN WHATSAPP APP FIRST
-           THEN FALL BACK TO WEB
-        ====================================== */
+    /* ================= WHATSAPP ================= */
 
-        const encodedMessage =
-            encodeURIComponent(message);
+    const whatsappNumber = "59995254792";
 
-        const whatsappAppURL =
-            `whatsapp://send?phone=${photographerWhatsApp}&text=${encodedMessage}`;
-
-        const whatsappWebURL =
-            `https://wa.me/${photographerWhatsApp}?text=${encodedMessage}`;
+    const whatsappURL =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 
+    /* Open WhatsApp */
 
-        /* CHANGE BUTTON TEXT */
+    window.open(whatsappURL, "_blank");
 
-        const submitButton =
-            bookingForm.querySelector(
-                'button[type="submit"]'
-            );
-
-
-        if (submitButton) {
-
-            submitButton.disabled = true;
-
-            submitButton.innerHTML =
-                `OPENING WHATSAPP...`;
-
-        }
-
-
-
-        /*
-         * Try the WhatsApp APP.
-         */
-
-        window.location.href = whatsappAppURL;
-
-
-
-        /*
-         * If the app cannot open,
-         * send the user to WhatsApp Web.
-         */
-
-        setTimeout(() => {
-
-            if (!document.hidden) {
-
-                window.location.href =
-                    whatsappWebURL;
-
-            }
-
-        }, 1500);
-
-    });
-
-}
+});
