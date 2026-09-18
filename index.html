@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="CM CreativeShots Photography - Professional photography booking website."
+    >
+
+    <title>CM CreativeShots | Photography</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =====================================
+           BOOKING CONTROLS
+        ===================================== */
+
+        .choice-button.selected,
+        .date-button.selected {
+            border-color: #8EB69B;
+            background: rgba(142, 182, 155, 0.12);
+            color: #8EB69B;
+            box-shadow: 0 0 0 1px rgba(142, 182, 155, 0.18);
+        }
+
+        .date-picker-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .date-button {
+            width: 100%;
+            min-height: 70px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mobile-date-input {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .hidden-field {
+            display: none;
+        }
+
+        .optional {
+            color: #8EB69B;
+            font-size: 0.7em;
+            margin-left: 6px;
+        }
+
+        /* =====================================
+           MOBILE NAVIGATION
+        ===================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .header {
+                padding: 14px 12px;
+            }
+
+            .navbar {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px 13px;
+                width: 100%;
+            }
+
+            .navbar a {
+                font-size: 0.68rem;
+                letter-spacing: 0.7px;
+                white-space: nowrap;
+            }
+
+            .menu-button,
+            .mobile-menu {
+                display: none !important;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 100px 20px 70px;
+            }
+
+            .hero-content {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.1rem, 10vw, 3.2rem);
+                line-height: 1.02;
+            }
+
+            .hero-description {
+                font-size: 0.92rem;
+                line-height: 1.6;
+            }
+
+            .main-button {
+                width: 100%;
+            }
+
+            .section {
+                padding: 70px 18px;
+            }
+
+            .section-heading h2 {
+                font-size: clamp(2rem, 9vw, 3rem);
+            }
+
+            .booking-container {
+                width: 100%;
+            }
+
+            .form-group {
+                width: 100%;
+            }
+
+            .choice-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .choice-button {
+                min-height: 58px;
+            }
+
+            .date-button {
+                min-height: 58px;
+            }
+
+            .submit-button {
+                width: 100%;
+                min-height: 58px;
+            }
+
+            .rules-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =====================================
+         HEADER
+    ===================================== -->
+
+    <header class="header">
+
+        <a href="#home" class="logo">
+            CM CREATIVESHOTS
+        </a>
+
+        <nav class="navbar">
+            <a href="#home">HOME</a>
+            <a href="#rules">RULES</a>
+            <a href="#booking">BOOKING</a>
+            <a href="#about">ABOUT ME</a>
+            <a href="#contact">CONTACT</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- =====================================
+             HOME
+        ===================================== -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <p class="small-title">
+                    WELCOME TO
+                </p>
+
+                <h1>
+                    CM CREATIVESHOTS<br>
+                    WEBSITE
+                </h1>
+
+                <p class="hero-description">
+                    CreativeShots By C.Monte is ready to serve you.
+                    Quality and creativity are what I bring to every
+                    photoshoot, from personal sessions to your special events.
+                    Simply get in touch with me.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#booking" class="main-button">
+                        BOOK A SESSION
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-decoration">
+
+                <div class="circle circle-one"></div>
+
+                <div class="circle circle-two"></div>
+
+                <div class="hero-text-decoration">
+                    CM
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             RULES
+        ===================================== -->
+
+        <section class="section rules-section" id="rules">
+
+            <div class="section-heading">
+
+                <p class="small-title">
+                    PLEASE READ BEFORE BOOKING
+                </p>
+
+                <h2>
+                    CM CREATIVESHOTS<br>
+                    PHOTOGRAPHY BOOKING POLICY
+                </h2>
+
+            </div>
+
+
+            <div class="rules-grid">
+
+                <div class="rule-card">
+                    <div class="rule-number">01</div>
+                    <h3>DEPOSIT REQUIRED</h3>
+                    <p>
+                        A deposit is required to secure your date.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">02</div>
+                    <h3>BOOKING CONFIRMATION</h3>
+                    <p>
+                        Your booking is not confirmed until the deposit is paid.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">03</div>
+                    <h3>NON-REFUNDABLE</h3>
+                    <p>
+                        Deposits are non-refundable.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">04</div>
+                    <h3>BE ON TIME</h3>
+                    <p>
+                        Please arrive on time. Late arrivals will be charged a late fee.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">05</div>
+                    <h3>RESCHEDULING</h3>
+                    <p>
+                        Rescheduling must be requested in advance.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">06</div>
+                    <h3>COME PHOTO-READY</h3>
+                    <p>
+                        Please come photo-ready unless agreed otherwise.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">07</div>
+                    <h3>EDITED PHOTOS</h3>
+                    <p>
+                        Edited photos will be delivered within the agreed timeframe.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">08</div>
+                    <h3>RAW PHOTOS</h3>
+                    <p>
+                        RAW/unedited photos are not included.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">09</div>
+                    <h3>SOCIAL MEDIA</h3>
+                    <p>
+                        Please let us know beforehand if you prefer your photos
+                        not to be posted on our social media.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">10</div>
+                    <h3>LOCATION</h3>
+                    <p>
+                        Indoor/outdoor location and any additional fees will be
+                        confirmed before booking.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="rules-bottom">
+                BY BOOKING WITH CREATIVE SHOTS, YOU ACKNOWLEDGE AND AGREE
+                TO THE BOOKING POLICY ABOVE.
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             BOOKING
+        ===================================== -->
+
+        <section class="section booking-section" id="booking">
+
+            <div class="section-heading">
+
+                <p class="small-title">
+                    BOOK YOUR SESSION
+                </p>
+
+                <h2>
+                    BOOKING
+                </h2>
+
+                <p>
+                    Please complete all required fields below.
+                    Your booking request will be sent directly through WhatsApp.
+                </p>
+
+            </div>
+
+
+            <div class="booking-container">
+
+                <form id="bookingForm" class="booking-form">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            FIRST &amp; LAST NAME
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your first and last name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            PHONE NUMBER
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DATE -->
+
+                    <div class="form-group full-width">
+
+                        <label for="date">
+                            DATE
+                            <span>*</span>
+                        </label>
+
+                        <div class="date-picker-wrap">
+
+                            <button
+                                type="button"
+                                class="choice-button date-button"
+                                id="dateButton"
+                            >
+                                SELECT DATE
+                            </button>
+
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                class="mobile-date-input"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="form-group">
+
+                        <label for="location">
+                            LOCATION
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="Enter the photoshoot location"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- TIME -->
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            TIME
+                            <span>*</span>
+                        </label>
+
+                        <div class="choice-grid time-options" id="timeOptions">
+
+                            <button type="button" class="choice-button" data-value="2:00 PM">
+                                2:00 PM
+                            </button>
+
+                            <button type="button" class="choice-button" data-value="3:00 PM">
+                                3:00 PM
+                            </button>
+
+                            <button type="button" class="choice-button" data-value="4:00 PM">
+                                4:00 PM
+                            </button>
+
+                            <button type="button" class="choice-button" data-value="5:00 PM">
+                                5:00 PM
+                            </button>
+
+                            <button type="button" class="choice-button" data-value="6:00 PM">
+                                6:00 PM
+                            </button>
+
+                            <button type="button" class="choice-button" data-value="7:00 PM">
+                                7:00 PM
+                            </button>
+
+                            <button type="button" class="choice-button" data-value="OTHER">
+                                OTHER
+                            </button>
+
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="selectedTime"
+                            name="selectedTime"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- OTHER TIME -->
+
+                    <div
+                        class="form-group full-width hidden-field"
+                        id="otherTimeContainer"
+                    >
+
+                        <label for="otherTime">
+                            YOUR PREFERRED TIME
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="otherTime"
+                            name="otherTime"
+                            placeholder="Enter your preferred time"
+                        >
+
+                    </div>
+
+
+                    <!-- SESSION TYPE -->
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            TYPE OF SESSION
+                            <span>*</span>
+                        </label>
+
+                        <div class="choice-grid" id="eventOptions">
+
+                            <button
+                                type="button"
+                                class="choice-button"
+                                data-value="Indoor"
+                            >
+                                INDOOR
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button"
+                                data-value="Outdoor"
+                            >
+                                OUTDOOR
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button"
+                                data-value="Other Event"
+                            >
+                                OTHER EVENT
+                            </button>
+
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="selectedEvent"
+                            name="selectedEvent"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- OTHER EVENT - OPTIONAL -->
+
+                    <div
+                        class="form-group full-width hidden-field"
+                        id="otherEventContainer"
+                    >
+
+                        <label for="otherEvent">
+                            PLEASE TELL ME WHAT OTHER EVENT YOU NEED
+                            <span class="optional">OPTIONAL</span>
+                        </label>
+
+                        <textarea
+                            id="otherEvent"
+                            name="otherEvent"
+                            rows="4"
+                            placeholder="Tell me what type of event or session you need..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- NUMBER OF PEOPLE -->
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            HOW MANY PEOPLE WILL BE PHOTOGRAPHED?
+                            <span>*</span>
+                        </label>
+
+                        <div class="number-selector">
+
+                            <button
+                                type="button"
+                                id="minusButton"
+                                class="number-button"
+                            >
+                                −
+                            </button>
+
+                            <div
+                                id="peopleNumber"
+                                class="number-display"
+                            >
+                                1
+                            </div>
+
+                            <button
+                                type="button"
+                                id="plusButton"
+                                class="number-button"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="numberOfPeople"
+                            name="numberOfPeople"
+                            value="1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PAYMENT -->
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            PAYMENT METHOD
+                            <span>*</span>
+                        </label>
+
+                        <div
+                            class="choice-grid payment-options"
+                            id="paymentOptions"
+                        >
+
+                            <button
+                                type="button"
+                                class="choice-button"
+                                data-value="Cash"
+                            >
+                                CASH
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button"
+                                data-value="Online"
+                            >
+                                ONLINE
+                            </button>
+
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="selectedPayment"
+                            name="selectedPayment"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- OPTIONAL MESSAGE -->
+
+                    <div class="form-group full-width">
+
+                        <label for="extraMessage">
+                            ANYTHING ELSE YOU'D LIKE ME TO KNOW?
+                            <span class="optional">OPTIONAL</span>
+                        </label>
+
+                        <textarea
+                            id="extraMessage"
+                            name="extraMessage"
+                            rows="5"
+                            placeholder="Tell me anything else you'd like me to know about your booking..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- REQUIRED NOTICE -->
+
+                    <div class="required-notice">
+
+                        <strong>* REQUIRED</strong>
+
+                        <span>
+                            All required fields must be completed before your
+                            booking can be submitted.
+                        </span>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        BOOK NOW
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ABOUT ME
+        ===================================== -->
+
+        <section class="section about-section" id="about">
+
+            <div class="section-heading">
+
+                <p class="small-title">
+                    GET TO KNOW ME
+                </p>
+
+                <h2>
+                    ABOUT ME
+                </h2>
+
+            </div>
+
+
+            <div class="about-content">
+
+                <div class="about-label">
+                    CM CREATIVESHOTS
+                </div>
+
+
+                <div class="about-text">
+
+                    <p>
+                        In 2023, my journey into photography began unexpectedly.
+                        I attended an event where someone I knew was taking photographs.
+                        Out of curiosity, I jokingly asked if I could borrow his camera
+                        and take a few pictures myself. The moment I held the camera
+                        and began capturing what was happening around me, something clicked.
+                        I loved the feeling of being behind the lens and turning ordinary
+                        moments into memories.
+                    </p>
+
+
+                    <p>
+                        Not long after that experience, I told him I wanted a camera
+                        of my own and decided to purchase one. From there, photography
+                        quickly became more than just something I wanted to try.
+                        I started photographing anything that caught my attention—
+                        nature, animals, plants, people, and everyday moments.
+                        Every time I picked up my camera, I discovered something new,
+                        and my passion continued to grow.
+                    </p>
+
+
+                    <p>
+                        At the time, I was still in school and had never had a
+                        professional career or job. I was simply a young boy who
+                        unexpectedly discovered something he genuinely loved.
+                        I didn’t begin with professional training or photography
+                        courses. Instead, I learned through practice, experimentation,
+                        patience, and constantly challenging myself to improve.
+                    </p>
+
+
+                    <p>
+                        As I continued developing my skills, I chose not to limit
+                        myself to one particular style of photography. I enjoy
+                        exploring different areas and gaining experience wherever
+                        possible. One of the biggest milestones in my journey so far
+                        has been photographing a wedding. Being trusted to capture
+                        such an important day showed me how meaningful photography
+                        can be. It isn’t simply about taking beautiful pictures;
+                        it’s about preserving emotions, connections, and moments
+                        that people can return to for years to come.
+                    </p>
+
+
+                    <p>
+                        Photography has taught me to see the world differently.
+                        Things that may seem ordinary to someone else can become
+                        something special through the right perspective, lighting,
+                        timing, and creativity. What started with borrowing a camera
+                        at an event has grown into a passion that I hope will eventually
+                        become my full-time career.
+                    </p>
+
+
+                    <p>
+                        My goal is to continue growing as a photographer, travel and
+                        experience new places through my work, and build a name for
+                        myself in the photography industry. More importantly, I want
+                        the people who step in front of my camera to receive more than
+                        just photographs. I want to give them an experience—one where
+                        they feel comfortable, confident, and excited to see themselves
+                        through my lens.
+                    </p>
+
+
+                    <p>
+                        I know that my journey is only beginning. I still have much
+                        to learn, many experiences ahead of me, and countless moments
+                        left to capture. What began as a simple joke and a borrowed
+                        camera in 2023 has developed into a dream that I am determined
+                        to pursue.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONTACT
+        ===================================== -->
+
+        <section class="section contact-section" id="contact">
+
+            <div class="section-heading">
+
+                <p class="small-title">
+                    GET IN TOUCH
+                </p>
+
+                <h2>
+                    CONTACT
+                </h2>
+
+                <p>
+                    Have a question or want to book a session?
+                    Feel free to contact me.
+                </p>
+
+            </div>
+
+
+            <div class="contact-grid">
+
+
+                <!-- WHATSAPP -->
+
+                <a
+                    href="https://wa.me/59995254792"
+                    class="contact-card"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="contact-icon">
+                        <span>◉</span>
+                    </div>
+
+                    <div>
+                        <h3>WHATSAPP</h3>
+                        <p>+599 9 525 4792</p>
+                    </div>
+
+                    <div class="contact-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- EMAIL -->
+
+                <a
+                    href="mailto:cmcreativeshots@gmail.com"
+                    class="contact-card"
+                >
+
+                    <div class="contact-icon">
+                        <span>✉</span>
+                    </div>
+
+                    <div>
+                        <h3>GMAIL</h3>
+                        <p>cmcreativeshots@gmail.com</p>
+                    </div>
+
+                    <div class="contact-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- INSTAGRAM -->
+
+                <a
+                    href="https://instagram.com/cm.creativeshots"
+                    class="contact-card"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="contact-icon">
+                        <span>◎</span>
+                    </div>
+
+                    <div>
+                        <h3>INSTAGRAM</h3>
+                        <p>cm.creativeshots</p>
+                    </div>
+
+                    <div class="contact-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- FACEBOOK -->
+
+                <a
+                    href="https://www.facebook.com/"
+                    class="contact-card"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="contact-icon">
+                        <span>f</span>
+                    </div>
+
+                    <div>
+                        <h3>FACEBOOK</h3>
+                        <p>Curshell Monte</p>
+                    </div>
+
+                    <div class="contact-arrow">
+                        →
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         FOOTER
+    ===================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            CM CREATIVESHOTS
+        </div>
+
+        <p>
+            © 2026 CM CreativeShots. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================
+         DATE SCRIPT
+    ===================================== -->
+
+    <script>
+        (() => {
+
+            const dateButton =
+                document.getElementById("dateButton");
+
+            const bookingDateInput =
+                document.getElementById("date");
+
+            if (!dateButton || !bookingDateInput) {
+                return;
+            }
+
+            const today =
+                new Date().toISOString().split("T")[0];
+
+            bookingDateInput.min = today;
+
+            bookingDateInput.addEventListener("change", () => {
+
+                if (!bookingDateInput.value) {
+                    dateButton.textContent = "SELECT DATE";
+                    dateButton.classList.remove("selected");
+                    return;
+                }
+
+                const selectedDate =
+                    new Date(
+                        bookingDateInput.value + "T00:00:00"
+                    );
+
+                const formattedDate =
+                    selectedDate.toLocaleDateString(
+                        "en-US",
+                        {
+                            weekday: "short",
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric"
+                        }
+                    );
+
+                dateButton.textContent = formattedDate;
+
+                dateButton.classList.add("selected");
+
+            });
+
+        })();
+    </script>
+
+
+    <!-- =====================================
+         MAIN JAVASCRIPT
+    ===================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
