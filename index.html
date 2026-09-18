@@ -2,12 +2,15 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="CM CreativeShots Photography - Professional photography booking website.">
+    <meta
+        name="description"
+        content="CM CreativeShots Photography - Professional photography booking website."
+    >
 
     <title>CM CreativeShots | Photography</title>
 
@@ -15,9 +18,7 @@
 
     <style>
 
-        /* =====================================
-           DATE
-           ===================================== */
+        /* DATE BUTTON ONLY */
 
         .date-button {
             width: 100%;
@@ -42,36 +43,25 @@
             color: #8EB69B;
         }
 
-        /* =====================================
-           SELECTED BOOKING BUTTONS
-           ===================================== */
+        /* SELECTED BUTTON STATE */
 
         .choice-button.selected,
         .choice-button[aria-pressed="true"],
         .choice-button[data-selected="true"] {
-
             border-color: #8EB69B !important;
-
             background: rgba(142, 182, 155, 0.20) !important;
-
             color: #8EB69B !important;
-
             box-shadow:
                 0 0 0 2px rgba(142, 182, 155, 0.35),
-                inset 0 0 0 1px rgba(142, 182, 155, 0.25)
-                !important;
-
+                inset 0 0 0 1px rgba(142, 182, 155, 0.25) !important;
             transform: translateY(-1px);
         }
 
         .choice-button.selected::after,
         .choice-button[aria-pressed="true"]::after,
         .choice-button[data-selected="true"]::after {
-
             content: " ✓";
-
             font-weight: 900;
-
             margin-left: 8px;
         }
 
@@ -107,8 +97,45 @@
 
 
         /* =====================================
-           MOBILE
-           ===================================== */
+           HEADER / NAVIGATION
+        ===================================== */
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .header-brand {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px 22px;
+            width: 100%;
+        }
+
+        .navbar a {
+            white-space: nowrap;
+        }
+
+        .menu-button,
+        .mobile-menu {
+            display: none !important;
+        }
+
+
+        /* =====================================
+           MOBILE RESPONSIVE
+        ===================================== */
 
         @media (max-width: 600px) {
 
@@ -117,7 +144,7 @@
             }
 
             .header {
-                padding: 16px 12px !important;
+                padding: 14px 18px;
             }
 
             .navbar {
@@ -256,6 +283,8 @@
                 line-height: 1.5;
             }
 
+            /* RULES */
+
             .rules-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -274,6 +303,18 @@
                 line-height: 1.5;
             }
 
+            .rule-number {
+                font-size: 0.75rem;
+            }
+
+            .rules-bottom {
+                font-size: 0.75rem;
+                line-height: 1.5;
+                padding: 18px;
+            }
+
+            /* ABOUT ME */
+
             .about-content {
                 width: 100%;
             }
@@ -288,6 +329,8 @@
                 line-height: 1.65;
                 margin-bottom: 18px;
             }
+
+            /* CONTACT */
 
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -315,6 +358,8 @@
                 font-size: 1rem;
             }
 
+            /* FOOTER */
+
             .footer {
                 padding: 35px 18px 25px;
             }
@@ -330,50 +375,32 @@
 
 
         /* =====================================
-           HEADER
-           LOGO ABOVE NAVIGATION
-           ===================================== */
+           HEADER - LOGO ABOVE NAVIGATION
+        ===================================== */
 
         .header {
-
             display: flex !important;
-
             flex-direction: column !important;
-
             align-items: center !important;
-
             justify-content: center !important;
-
             gap: 14px !important;
-
             width: 100% !important;
-
             text-align: center !important;
         }
 
         .header .logo {
-
             display: block !important;
-
             width: 100% !important;
-
             text-align: center !important;
-
             margin: 0 !important;
         }
 
         .header .navbar {
-
             display: flex !important;
-
             align-items: center !important;
-
             justify-content: center !important;
-
             flex-wrap: wrap !important;
-
             width: 100% !important;
-
             margin: 0 !important;
         }
 
@@ -381,61 +408,33 @@
             white-space: nowrap !important;
         }
 
-
-        /* =====================================
-           BOOK NOW
-           ===================================== */
-
         .main-button,
         .book-now,
         .submit-button {
-
             -webkit-tap-highlight-color: transparent;
-
             touch-action: manipulation;
         }
-
 
         @media (max-width: 600px) {
 
             .header {
-
                 padding: 16px 12px !important;
-
                 gap: 12px !important;
             }
 
             .header .logo {
-
                 font-size: 1.25rem !important;
-
                 letter-spacing: 1.5px !important;
             }
 
             .header .navbar {
-
                 gap: 8px 12px !important;
             }
 
             .header .navbar a {
-
                 font-size: 0.68rem !important;
-
                 letter-spacing: 0.7px !important;
             }
-        }
-
-
-        /* =====================================
-           SMOOTH SCROLL
-           ===================================== */
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        #booking {
-            scroll-margin-top: 90px;
         }
 
     </style>
@@ -452,9 +451,13 @@
 
     <header class="header">
 
-        <a href="#home" class="logo">
-            CM CREATIVESHOTS
-        </a>
+        <div class="header-brand">
+
+            <a href="#home" class="logo">
+                CM CREATIVESHOTS
+            </a>
+
+        </div>
 
         <nav class="navbar">
 
@@ -487,13 +490,10 @@
 
 
         <!-- =====================================
-             1. HOME SCREEN
+             HOME
         ====================================== -->
 
-        <section
-            class="hero"
-            id="home"
-        >
+        <section class="hero" id="home">
 
             <div class="hero-content">
 
@@ -507,47 +507,666 @@
                 </h1>
 
                 <p class="hero-description">
-
                     CreativeShots By C.Monte is ready to serve you.
                     Quality and creativity are what I bring to every
-                    photoshoot, from personal sessions to your special events.
-                    Simply get in touch with me.
-
+                    photoshoot, from personal sessions to your special
+                    events. Simply get in touch with me.
                 </p>
 
-                <div class="hero-buttons">
-
-                    <a
-                        href="#booking"
-                        class="main-button book-now"
-                    >
-                        BOOK A SESSION
-                        <span>→</span>
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="hero-decoration">
-
-                <div class="circle circle-one"></div>
-
-                <div class="circle circle-two"></div>
-
-                <div class="hero-text-decoration">
-                    CM
-                </div>
+                <a
+                    href="#booking"
+                    class="main-button"
+                >
+                    BOOK A SESSION
+                </a>
 
             </div>
 
         </section>
 
 
+        <!-- =====================================
+             BOOKING
+        ====================================== -->
+
+        <section
+            class="section booking-section"
+            id="booking"
+        >
+
+            <div class="section-heading">
+
+                <p class="small-title">
+                    RESERVE YOUR SESSION
+                </p>
+
+                <h2>
+                    BOOKING
+                </h2>
+
+                <p>
+                    Fill in your details below and send your booking
+                    request directly through WhatsApp.
+                </p>
+
+            </div>
+
+
+            <div class="booking-container">
+
+                <form
+                    class="booking-form"
+                    id="bookingForm"
+                    novalidate
+                >
+
+
+                    <!-- FULL NAME -->
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            FULL NAME *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            PHONE NUMBER *
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="+599 9 000 0000"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="form-group">
+
+                        <label for="location">
+                            LOCATION *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="Where will the photoshoot take place?"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DATE -->
+
+                    <div class="form-group">
+
+                        <label>
+                            DATE *
+                        </label>
+
+                        <div class="date-picker-wrap">
+
+                            <button
+                                type="button"
+                                class="choice-button date-button"
+                                id="dateButton"
+                            >
+                                SELECT DATE
+                            </button>
+
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                class="mobile-date-input"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TIME -->
+
+                    <div class="form-group">
+
+                        <label>
+                            YOUR PREFERRED TIME *
+                        </label>
+
+                        <div class="choice-grid" id="timeOptions">
+
+                            <button
+                                type="button"
+                                class="choice-button time-option"
+                                data-value="2:00 PM"
+                            >
+                                2:00 PM
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button time-option"
+                                data-value="3:00 PM"
+                            >
+                                3:00 PM
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button time-option"
+                                data-value="4:00 PM"
+                            >
+                                4:00 PM
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button time-option"
+                                data-value="5:00 PM"
+                            >
+                                5:00 PM
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button time-option"
+                                data-value="6:00 PM"
+                            >
+                                6:00 PM
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button time-option"
+                                data-value="7:00 PM"
+                            >
+                                7:00 PM
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button time-option"
+                                data-value="OTHER"
+                            >
+                                OTHER
+                            </button>
+
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="selectedTime"
+                            name="selectedTime"
+                        >
+
+                        <div
+                            class="form-group hidden-field"
+                            id="otherTimeContainer"
+                        >
+
+                            <label for="otherTime">
+                                OTHER TIME
+                            </label>
+
+                            <input
+                                type="text"
+                                id="otherTime"
+                                name="otherTime"
+                                placeholder="Enter preferred time"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- NUMBER OF PEOPLE -->
+
+                    <div class="form-group">
+
+                        <label>
+                            NUMBER OF PEOPLE *
+                        </label>
+
+                        <div class="number-selector">
+
+                            <button
+                                type="button"
+                                class="number-button"
+                                id="minusButton"
+                                aria-label="Decrease number of people"
+                            >
+                                −
+                            </button>
+
+                            <span
+                                class="number-display"
+                                id="numberDisplay"
+                            >
+                                1
+                            </span>
+
+                            <button
+                                type="button"
+                                class="number-button"
+                                id="plusButton"
+                                aria-label="Increase number of people"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="numberOfPeople"
+                            name="numberOfPeople"
+                            value="1"
+                        >
+
+                    </div>
+
+
+                    <!-- TYPE OF PHOTOSHOOT -->
+
+                    <div class="form-group">
+
+                        <label>
+                            TYPE OF PHOTOSHOOT *
+                        </label>
+
+                        <div
+                            class="choice-grid"
+                            id="eventOptions"
+                        >
+
+                            <button
+                                type="button"
+                                class="choice-button event-option"
+                                data-value="Indoor"
+                            >
+                                INDOOR
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button event-option"
+                                data-value="Outdoor"
+                            >
+                                OUTDOOR
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button event-option"
+                                data-value="Other Event"
+                            >
+                                OTHER EVENT
+                            </button>
+
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="selectedEvent"
+                            name="selectedEvent"
+                        >
+
+                        <div
+                            class="form-group"
+                            id="otherEventContainer"
+                        >
+
+                            <label for="otherEvent">
+                                ANYTHING ELSE
+                            </label>
+
+                            <textarea
+                                id="otherEvent"
+                                name="otherEvent"
+                                rows="4"
+                                placeholder="Tell me anything else I should know about your photoshoot..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYMENT -->
+
+                    <div class="form-group">
+
+                        <label>
+                            PAYMENT METHOD *
+                        </label>
+
+                        <div
+                            class="choice-grid"
+                            id="paymentOptions"
+                        >
+
+                            <button
+                                type="button"
+                                class="choice-button payment-option"
+                                data-value="Cash"
+                            >
+                                CASH
+                            </button>
+
+                            <button
+                                type="button"
+                                class="choice-button payment-option"
+                                data-value="Online"
+                            >
+                                ONLINE
+                            </button>
+
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="selectedPayment"
+                            name="selectedPayment"
+                        >
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <div class="booking-submit">
+
+                        <p class="required-notice">
+                            * Required fields
+                        </p>
+
+                        <button
+                            type="submit"
+                            class="submit-button"
+                            id="submitButton"
+                        >
+                            BOOK NOW
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </section>
+
 
         <!-- =====================================
-             2. ABOUT ME
+             RULES
+        ====================================== -->
+
+        <section
+            class="section rules-section"
+            id="rules"
+        >
+
+            <div class="section-heading">
+
+                <p class="small-title">
+                    IMPORTANT INFORMATION
+                </p>
+
+                <h2>
+                    RULES
+                </h2>
+
+                <p>
+                    Please read the booking policy before making
+                    your reservation.
+                </p>
+
+            </div>
+
+
+            <div class="rules-title">
+
+                <h3>
+                    CM CREATIVE SHOTS
+                </h3>
+
+                <h4>
+                    PHOTOGRAPHY
+                </h4>
+
+                <h5>
+                    BOOKING POLICY
+                </h5>
+
+                <p>
+                    PLEASE READ BEFORE BOOKING
+                </p>
+
+            </div>
+
+
+            <div class="rules-grid">
+
+
+                <div class="rule-card">
+
+                    <span class="rule-number">
+                        01
+                    </span>
+
+                    <h3>
+                        DEPOSIT REQUIRED
+                    </h3>
+
+                    <p>
+                        A deposit is required to secure your date.
+                    </p>
+
+                </div>
+
+
+                <div class="rule-card">
+
+                    <span class="rule-number">
+                        02
+                    </span>
+
+                    <h3>
+                        BOOKING CONFIRMATION
+                    </h3>
+
+                    <p>
+                        Your booking is not confirmed until the deposit
+                        is paid.
+                    </p>
+
+                </div>
+
+
+                <div class="rule-card">
+
+                    <span class="rule-number">
+                        03
+                    </span>
+
+                    <h3>
+                        NON-REFUNDABLE
+                    </h3>
+
+                    <p>
+                        Deposits are non-refundable.
+                    </p>
+
+                </div>
+
+
+                <div class="rule-card">
+
+                    <span class="rule-number">
+                        04
+                    </span>
+
+                    <h3>
+                        BE ON TIME
+                    </h3>
+
+                    <p>
+                        Please arrive on time. Late arrivals will be
+                        charged a late fee.
+                    </p>
+
+                </div>
+
+
+                <div class="rule-card">
+
+                    <span class="rule-number">
+                        05
+                    </span>
+
+                    <h3>
+                        RESCHEDULING
+                    </h3>
+
+                    <p>
+                        Rescheduling must be requested in advance.
+                    </p>
+
+                </div>
+
+
+                <div class="rule-card">
+
+                    <span class="rule-number">
+                        06
+                    </span>
+
+                    <h3>
+                        COME PHOTO-READY
+                    </h3>
+
+                    <p>
+                        Please come photo-ready unless agreed otherwise.
+                    </p>
+
+                </div>
+
+
+                <div class="rule-card">
+
+                    <span class="rule-number">
+                        07
+                    </span>
+
+                    <h3>
+                        EDITED PHOTOS
+                    </h3>
+
+                    <p>
+                        Edited photos will be delivered within the
+                        agreed timeframe.
+                    </p>
+
+                </div>
+
+
+                <div class="rule-card">
+
+                    <span class="rule-number">
+                        08
+                    </span>
+
+                    <h3>
+                        RAW PHOTOS
+                    </h3>
+
+                    <p>
+                        RAW/unedited photos are not included.
+                    </p>
+
+                </div>
+
+
+                <div class="rule-card">
+
+                    <span class="rule-number">
+                        09
+                    </span>
+
+                    <h3>
+                        SOCIAL MEDIA
+                    </h3>
+
+                    <p>
+                        Please let us know beforehand if you prefer
+                        your photos not to be posted on our social media.
+                    </p>
+
+                </div>
+
+
+                <div class="rule-card">
+
+                    <span class="rule-number">
+                        10
+                    </span>
+
+                    <h3>
+                        LOCATION
+                    </h3>
+
+                    <p>
+                        Indoor/outdoor location and any additional fees
+                        will be confirmed before booking.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="rules-bottom">
+
+                <strong>
+                    BY BOOKING WITH CREATIVE SHOTS,
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ABOUT ME
         ====================================== -->
 
         <section
@@ -571,20 +1190,20 @@
             <div class="about-content">
 
                 <div class="about-label">
-                    CM CREATIVE SHOTS
+                    CREATIVE SHOTS BY C.MONTE
                 </div>
-
 
                 <div class="about-text">
 
+
                     <p>
                         In 2023, my journey into photography began unexpectedly.
-                        I attended an event where someone I knew was taking photographs.
-                        Out of curiosity, I jokingly asked if I could borrow his camera
-                        and take a few pictures myself. The moment I held the camera
-                        and began capturing what was happening around me, something
-                        clicked. I loved the feeling of being behind the lens and
-                        turning ordinary moments into memories.
+                        I attended an event where someone I knew was taking
+                        photographs. Out of curiosity, I jokingly asked if I could
+                        borrow his camera and take a few pictures myself. The moment
+                        I held the camera and began capturing what was happening
+                        around me, something clicked. I loved the feeling of being
+                        behind the lens and turning ordinary moments into memories.
                     </p>
 
 
@@ -651,6 +1270,7 @@
                         to pursue.
                     </p>
 
+
                 </div>
 
             </div>
@@ -658,652 +1278,8 @@
         </section>
 
 
-
         <!-- =====================================
-             3. RULES
-        ====================================== -->
-
-        <section
-            class="section rules-section"
-            id="rules"
-        >
-
-            <div class="section-heading">
-
-                <p class="small-title">
-                    CM CREATIVE SHOTS
-                </p>
-
-                <h2>
-                    BOOKING POLICY
-                </h2>
-
-                <p>
-                    PLEASE READ BEFORE BOOKING
-                </p>
-
-            </div>
-
-
-            <div class="rules-grid">
-
-
-                <div class="rule-card">
-
-                    <span class="rule-number">
-                        01
-                    </span>
-
-                    <h3>
-                        DEPOSIT REQUIRED
-                    </h3>
-
-                    <p>
-                        A deposit is required to secure your date.
-                    </p>
-
-                </div>
-
-
-                <div class="rule-card">
-
-                    <span class="rule-number">
-                        02
-                    </span>
-
-                    <h3>
-                        BOOKING CONFIRMATION
-                    </h3>
-
-                    <p>
-                        Your booking is not confirmed until the deposit is paid.
-                    </p>
-
-                </div>
-
-
-                <div class="rule-card">
-
-                    <span class="rule-number">
-                        03
-                    </span>
-
-                    <h3>
-                        NON-REFUNDABLE
-                    </h3>
-
-                    <p>
-                        Deposits are non-refundable.
-                    </p>
-
-                </div>
-
-
-                <div class="rule-card">
-
-                    <span class="rule-number">
-                        04
-                    </span>
-
-                    <h3>
-                        BE ON TIME
-                    </h3>
-
-                    <p>
-                        Please arrive on time. Late arrivals will be charged a late fee.
-                    </p>
-
-                </div>
-
-
-                <div class="rule-card">
-
-                    <span class="rule-number">
-                        05
-                    </span>
-
-                    <h3>
-                        RESCHEDULING
-                    </h3>
-
-                    <p>
-                        Rescheduling must be requested in advance.
-                    </p>
-
-                </div>
-
-
-                <div class="rule-card">
-
-                    <span class="rule-number">
-                        06
-                    </span>
-
-                    <h3>
-                        COME PHOTO-READY
-                    </h3>
-
-                    <p>
-                        Please come photo-ready unless agreed otherwise.
-                    </p>
-
-                </div>
-
-
-                <div class="rule-card">
-
-                    <span class="rule-number">
-                        07
-                    </span>
-
-                    <h3>
-                        EDITED PHOTOS
-                    </h3>
-
-                    <p>
-                        Edited photos will be delivered within the agreed timeframe.
-                    </p>
-
-                </div>
-
-
-                <div class="rule-card">
-
-                    <span class="rule-number">
-                        08
-                    </span>
-
-                    <h3>
-                        RAW PHOTOS
-                    </h3>
-
-                    <p>
-                        RAW/unedited photos are not included.
-                    </p>
-
-                </div>
-
-
-                <div class="rule-card">
-
-                    <span class="rule-number">
-                        09
-                    </span>
-
-                    <h3>
-                        SOCIAL MEDIA
-                    </h3>
-
-                    <p>
-                        Please let us know beforehand if you prefer your photos not
-                        to be posted on our social media.
-                    </p>
-
-                </div>
-
-
-                <div class="rule-card">
-
-                    <span class="rule-number">
-                        10
-                    </span>
-
-                    <h3>
-                        LOCATION
-                    </h3>
-
-                    <p>
-                        Indoor/outdoor location and any additional fees will be
-                        confirmed before booking.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="rules-bottom">
-
-                BY BOOKING WITH CREATIVE SHOTS,
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             4. BOOKING
-        ====================================== -->
-
-        <section
-            class="section booking-section"
-            id="booking"
-        >
-
-            <div class="section-heading">
-
-                <p class="small-title">
-                    RESERVE YOUR SESSION
-                </p>
-
-                <h2>
-                    BOOKING
-                </h2>
-
-                <p>
-                    Please complete all required information below.
-                </p>
-
-            </div>
-
-
-            <div class="booking-container">
-
-                <form
-                    class="booking-form"
-                    id="bookingForm"
-                >
-
-
-                    <!-- FULL NAME -->
-
-                    <div class="form-group">
-
-                        <label for="fullName">
-                            FULL NAME *
-                        </label>
-
-                        <input
-                            type="text"
-                            id="fullName"
-                            name="fullName"
-                            placeholder="Enter your full name"
-                            required
-                        >
-
-                    </div>
-
-
-
-                    <!-- PHONE -->
-
-                    <div class="form-group">
-
-                        <label for="phone">
-                            PHONE NUMBER *
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            placeholder="Enter your phone number"
-                            required
-                        >
-
-                    </div>
-
-
-
-                    <!-- LOCATION -->
-
-                    <div class="form-group">
-
-                        <label for="location">
-                            LOCATION *
-                        </label>
-
-                        <input
-                            type="text"
-                            id="location"
-                            name="location"
-                            placeholder="Where will the photoshoot take place?"
-                            required
-                        >
-
-                    </div>
-
-
-
-                    <!-- DATE -->
-
-                    <div class="form-group">
-
-                        <label>
-                            DATE *
-                        </label>
-
-                        <div class="date-picker-wrap">
-
-                            <button
-                                type="button"
-                                class="choice-button date-button"
-                                id="dateButton"
-                            >
-                                SELECT DATE
-                            </button>
-
-                            <input
-                                type="date"
-                                id="date"
-                                name="date"
-                                required
-                                class="mobile-date-input"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- TIME -->
-
-                    <div class="form-group">
-
-                        <label>
-                            TIME *
-                        </label>
-
-                        <div
-                            class="choice-grid"
-                            id="timeOptions"
-                        >
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="2:00 PM"
-                                aria-pressed="false"
-                            >
-                                2:00 PM
-                            </button>
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="3:00 PM"
-                                aria-pressed="false"
-                            >
-                                3:00 PM
-                            </button>
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="4:00 PM"
-                                aria-pressed="false"
-                            >
-                                4:00 PM
-                            </button>
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="5:00 PM"
-                                aria-pressed="false"
-                            >
-                                5:00 PM
-                            </button>
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="6:00 PM"
-                                aria-pressed="false"
-                            >
-                                6:00 PM
-                            </button>
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="7:00 PM"
-                                aria-pressed="false"
-                            >
-                                7:00 PM
-                            </button>
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="OTHER"
-                                aria-pressed="false"
-                            >
-                                OTHER
-                            </button>
-
-                        </div>
-
-                        <input
-                            type="hidden"
-                            id="selectedTime"
-                            name="selectedTime"
-                        >
-
-                        <div
-                            id="otherTimeContainer"
-                            style="display:none;"
-                        >
-
-                            <input
-                                type="time"
-                                id="otherTime"
-                                name="otherTime"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- NUMBER OF PEOPLE -->
-
-                    <div class="form-group">
-
-                        <label>
-                            HOW MANY PEOPLE *
-                        </label>
-
-                        <div class="number-selector">
-
-                            <button
-                                type="button"
-                                class="number-button"
-                                id="minusButton"
-                            >
-                                −
-                            </button>
-
-                            <span
-                                class="number-display"
-                                id="peopleNumber"
-                            >
-                                1
-                            </span>
-
-                            <button
-                                type="button"
-                                class="number-button"
-                                id="plusButton"
-                            >
-                                +
-                            </button>
-
-                        </div>
-
-                        <input
-                            type="hidden"
-                            id="numberOfPeople"
-                            name="numberOfPeople"
-                            value="1"
-                            required
-                        >
-
-                    </div>
-
-
-
-                    <!-- TYPE OF SESSION -->
-
-                    <div class="form-group">
-
-                        <label>
-                            TYPE OF SESSION *
-                        </label>
-
-                        <div
-                            class="choice-grid"
-                            id="eventOptions"
-                        >
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="Indoor"
-                                aria-pressed="false"
-                            >
-                                INDOOR
-                            </button>
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="Outdoor"
-                                aria-pressed="false"
-                            >
-                                OUTDOOR
-                            </button>
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="Other Event"
-                                aria-pressed="false"
-                            >
-                                OTHER EVENT
-                            </button>
-
-                        </div>
-
-                        <input
-                            type="hidden"
-                            id="selectedEvent"
-                            name="selectedEvent"
-                        >
-
-                        <div
-                            id="otherEventContainer"
-                            style="display:none;"
-                        >
-
-                            <input
-                                type="text"
-                                id="otherEvent"
-                                name="otherEvent"
-                                placeholder="Anything else? (optional)"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- PAYMENT -->
-
-                    <div class="form-group">
-
-                        <label>
-                            PAYMENT *
-                        </label>
-
-                        <div
-                            class="choice-grid"
-                            id="paymentOptions"
-                        >
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="Cash"
-                                aria-pressed="false"
-                            >
-                                CASH
-                            </button>
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="Online"
-                                aria-pressed="false"
-                            >
-                                ONLINE
-                            </button>
-
-                        </div>
-
-                        <input
-                            type="hidden"
-                            id="selectedPayment"
-                            name="selectedPayment"
-                        >
-
-                    </div>
-
-
-
-                    <!-- SUBMIT -->
-
-                    <div class="form-group">
-
-                        <p class="required-notice">
-                            * All fields are required except Anything Else.
-                        </p>
-
-                        <button
-                            type="submit"
-                            class="submit-button"
-                        >
-                            BOOK NOW
-                            <span>→</span>
-                        </button>
-
-                    </div>
-
-
-                    <!-- SUCCESS -->
-
-                    <div
-                        id="bookingSuccess"
-                        style="display:none;"
-                    >
-
-                        <h3>
-                            THANK YOU!
-                        </h3>
-
-                        <p>
-                            Your booking request is ready.
-                            WhatsApp will open so you can send your request.
-                        </p>
-
-                    </div>
-
-
-                </form>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             5. CONTACT
+             CONTACT
         ====================================== -->
 
         <section
@@ -1332,8 +1308,6 @@
             <div class="contact-grid">
 
 
-                <!-- WHATSAPP -->
-
                 <a
                     href="https://wa.me/59995254792"
                     class="contact-card"
@@ -1353,6 +1327,7 @@
 
                     </div>
 
+
                     <div>
 
                         <h3>
@@ -1365,15 +1340,13 @@
 
                     </div>
 
+
                     <span class="contact-arrow">
                         →
                     </span>
 
                 </a>
 
-
-
-                <!-- EMAIL -->
 
                 <a
                     href="https://mail.google.com/mail/?view=cm&fs=1&to=cmcreativeshots@gmail.com"
@@ -1400,6 +1373,7 @@
 
                     </div>
 
+
                     <div>
 
                         <h3>
@@ -1412,15 +1386,13 @@
 
                     </div>
 
+
                     <span class="contact-arrow">
                         →
                     </span>
 
                 </a>
 
-
-
-                <!-- INSTAGRAM -->
 
                 <a
                     href="https://www.instagram.com/cm.creativeshots/"
@@ -1457,6 +1429,7 @@
 
                     </div>
 
+
                     <div>
 
                         <h3>
@@ -1469,15 +1442,13 @@
 
                     </div>
 
+
                     <span class="contact-arrow">
                         →
                     </span>
 
                 </a>
 
-
-
-                <!-- FACEBOOK -->
 
                 <a
                     href="https://www.facebook.com/"
@@ -1496,6 +1467,7 @@
 
                     </div>
 
+
                     <div>
 
                         <h3>
@@ -1507,6 +1479,7 @@
                         </p>
 
                     </div>
+
 
                     <span class="contact-arrow">
                         →
@@ -1520,106 +1493,3 @@
         </section>
 
     </main>
-
-
-
-    <!-- =====================================
-         FOOTER
-    ====================================== -->
-
-    <footer class="footer">
-
-        <div class="footer-logo">
-            CM CREATIVESHOTS
-        </div>
-
-        <p>
-            Photography • Creativity • Memories
-        </p>
-
-        <div class="footer-line"></div>
-
-        <p class="copyright">
-            © 2026 CM CreativeShots. All Rights Reserved.
-        </p>
-
-    </footer>
-
-
-
-    <!-- =====================================
-         DATE SCRIPT
-    ====================================== -->
-
-    <script>
-
-        (() => {
-
-            const dateButton =
-                document.getElementById("dateButton");
-
-            const bookingDateInput =
-                document.getElementById("date");
-
-            if (
-                !dateButton ||
-                !bookingDateInput
-            ) {
-                return;
-            }
-
-            const today =
-                new Date()
-                    .toISOString()
-                    .split("T")[0];
-
-            bookingDateInput.min = today;
-
-            bookingDateInput.addEventListener(
-                "change",
-                () => {
-
-                    if (!bookingDateInput.value) {
-                        return;
-                    }
-
-                    const selectedDate =
-                        new Date(
-                            bookingDateInput.value +
-                            "T00:00:00"
-                        );
-
-                    const formattedDate =
-                        selectedDate.toLocaleDateString(
-                            "en-US",
-                            {
-                                weekday: "short",
-                                month: "short",
-                                day: "numeric",
-                                year: "numeric"
-                            }
-                        );
-
-                    dateButton.textContent =
-                        formattedDate;
-
-                    dateButton.classList.add(
-                        "selected"
-                    );
-
-                }
-            );
-
-        })();
-
-    </script>
-
-
-    <!-- BOOKING JAVASCRIPT -->
-
-    <script src="script.js"></script>
-
-
-</body>
-
-</html>
