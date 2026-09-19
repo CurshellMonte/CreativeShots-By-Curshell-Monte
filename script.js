@@ -1,316 +1,240 @@
-/* =====================================================
-   CM CREATIVE SHOTS
-   BOOKING SYSTEM
-===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
 
+    /* =========================
+       MOBILE MENU
+    ========================= */
 
-/* ================= MOBILE MENU ================= */
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
 
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+    if (menuToggle && navMenu) {
 
-menuToggle.addEventListener("click", () => {
+        menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
 
-    navMenu.classList.toggle("open");
+            const icon = menuToggle.querySelector("i");
 
-    const icon = menuToggle.querySelector("i");
-
-    if (navMenu.classList.contains("open")) {
-        icon.classList.remove("fa-bars");
-        icon.classList.add("fa-xmark");
-    } else {
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-    }
-
-});
-
-
-/* Close menu after clicking a link */
-
-document.querySelectorAll("nav a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navMenu.classList.remove("open");
-
-        const icon = menuToggle.querySelector("i");
-
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-
-    });
-
-});
-
-
-/* ================= DATE ================= */
-
-const dateInput = document.getElementById("date");
-
-/* Prevent customers from selecting a date in the past */
-
-const today = new Date();
-
-const year = today.getFullYear();
-const month = String(today.getMonth() + 1).padStart(2, "0");
-const day = String(today.getDate()).padStart(2, "0");
-
-dateInput.min = `${year}-${month}-${day}`;
-
-
-/* ================= TIME ================= */
-
-const timeButtons = document.querySelectorAll(".time-choice");
-
-const selectedTime = document.getElementById("selectedTime");
-
-const otherTimeBox = document.getElementById("otherTimeBox");
-const otherTime = document.getElementById("otherTime");
-
-
-timeButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        /* Remove selected from all time buttons */
-
-        timeButtons.forEach(btn => {
-            btn.classList.remove("selected");
+            if (navMenu.classList.contains("active")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
+            } else {
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+            }
         });
 
-        /* Select clicked button */
+        navMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("active");
 
-        button.classList.add("selected");
+                const icon = menuToggle.querySelector("i");
 
-        const value = button.dataset.value;
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+            });
+        });
+    }
 
-        selectedTime.value = value;
+
+    /* =========================
+       DATE
+    ========================= */
+
+    const dateInput = document.getElementById("date");
+
+    if (dateInput) {
+
+        const today = new Date();
+
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
+
+        dateInput.min = `${year}-${month}-${day}`;
+    }
 
 
-        /* OTHER */
+    /* =========================
+       CHOICE BUTTONS
+    ========================= */
+
+    let selectedTime = "";
+    let selectedSession = "";
+    let selectedPeople = "";
+    let selectedPayment = "";
+
+
+    function setupChoiceGroup(containerId, callback) {
+
+        const container = document.getElementById(containerId);
+
+        if (!container) return;
+
+        const buttons = container.querySelectorAll(".choice-button");
+
+        buttons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                buttons.forEach(btn => {
+                    btn.classList.remove("selected");
+                });
+
+                button.classList.add("selected");
+
+                callback(button.dataset.value);
+            });
+
+        });
+    }
+
+
+    /* TIME */
+
+    setupChoiceGroup("timeChoices", value => {
+
+        selectedTime = value;
+
+        const otherTime = document.getElementById("otherTime");
 
         if (value === "OTHER") {
 
-            otherTimeBox.classList.add("show");
-
+            otherTime.classList.add("show");
             otherTime.required = true;
-
-            otherTime.focus();
 
         } else {
 
-            otherTimeBox.classList.remove("show");
-
+            otherTime.classList.remove("show");
             otherTime.required = false;
-
             otherTime.value = "";
 
         }
-
     });
 
-});
 
+    /* SESSION TYPE */
 
-/* ================= SESSION TYPE ================= */
+    setupChoiceGroup("sessionChoices", value => {
 
-const typeButtons = document.querySelectorAll(".type-choice");
+        selectedSession = value;
 
-const selectedType = document.getElementById("selectedType");
-
-const otherEventBox = document.getElementById("otherEventBox");
-const otherEvent = document.getElementById("otherEvent");
-
-
-typeButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        /* Remove selected */
-
-        typeButtons.forEach(btn => {
-            btn.classList.remove("selected");
-        });
-
-        /* Select */
-
-        button.classList.add("selected");
-
-        const value = button.dataset.value;
-
-        selectedType.value = value;
-
-
-        /* OTHER EVENT */
+        const otherEvent = document.getElementById("otherEvent");
 
         if (value === "OTHER EVENT") {
 
-            otherEventBox.classList.add("show");
-
+            otherEvent.classList.add("show");
             otherEvent.required = true;
-
-            otherEvent.focus();
 
         } else {
 
-            otherEventBox.classList.remove("show");
-
+            otherEvent.classList.remove("show");
             otherEvent.required = false;
-
             otherEvent.value = "";
 
         }
-
     });
 
-});
 
+    /* PEOPLE */
 
-/* ================= NUMBER OF PEOPLE ================= */
-
-const peopleButtons = document.querySelectorAll(".people-choice");
-
-const selectedPeople = document.getElementById("selectedPeople");
-
-
-peopleButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        peopleButtons.forEach(btn => {
-            btn.classList.remove("selected");
-        });
-
-        button.classList.add("selected");
-
-        selectedPeople.value = button.dataset.value;
-
+    setupChoiceGroup("peopleChoices", value => {
+        selectedPeople = value;
     });
 
-});
 
+    /* PAYMENT */
 
-/* ================= PAYMENT ================= */
-
-const paymentButtons = document.querySelectorAll(".payment-choice");
-
-const selectedPayment = document.getElementById("selectedPayment");
-
-
-paymentButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        paymentButtons.forEach(btn => {
-            btn.classList.remove("selected");
-        });
-
-        button.classList.add("selected");
-
-        selectedPayment.value = button.dataset.value;
-
+    setupChoiceGroup("paymentChoices", value => {
+        selectedPayment = value;
     });
 
-});
+
+    /* =========================
+       FORM
+    ========================= */
+
+    const bookingForm = document.getElementById("bookingForm");
+
+    if (!bookingForm) return;
 
 
-/* ================= FORM ================= */
+    bookingForm.addEventListener("submit", event => {
 
-const bookingForm = document.getElementById("bookingForm");
-
-
-bookingForm.addEventListener("submit", function(event) {
-
-    event.preventDefault();
+        event.preventDefault();
 
 
-    /* Basic validation */
+        const fullName = document.getElementById("fullName").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const date = document.getElementById("date").value;
+        const location = document.getElementById("location").value.trim();
 
-    if (!selectedTime.value) {
-
-        alert("Please select a time.");
-
-        return;
-
-    }
+        const otherTimeInput = document.getElementById("otherTime");
+        const otherEventInput = document.getElementById("otherEvent");
 
 
-    if (!selectedType.value) {
+        /* VALIDATION */
 
-        alert("Please select the session type.");
+        if (!fullName) {
+            alert("Please enter your full name.");
+            return;
+        }
 
-        return;
+        if (!phone) {
+            alert("Please enter your phone number.");
+            return;
+        }
 
-    }
+        if (!date) {
+            alert("Please select a date.");
+            return;
+        }
 
+        if (!selectedTime) {
+            alert("Please select a time.");
+            return;
+        }
 
-    if (!selectedPeople.value) {
+        if (selectedTime === "OTHER" && !otherTimeInput.value.trim()) {
+            alert("Please enter your preferred time.");
+            return;
+        }
 
-        alert("Please select the number of people.");
+        if (!location) {
+            alert("Please enter the location.");
+            return;
+        }
 
-        return;
+        if (!selectedSession) {
+            alert("Please select a session type.");
+            return;
+        }
 
-    }
+        if (
+            selectedSession === "OTHER EVENT" &&
+            !otherEventInput.value.trim()
+        ) {
+            alert("Please describe your event.");
+            return;
+        }
 
+        if (!selectedPeople) {
+            alert("Please select the number of people.");
+            return;
+        }
 
-    if (!selectedPayment.value) {
-
-        alert("Please select a payment method.");
-
-        return;
-
-    }
-
-
-    /* ================= GET DATA ================= */
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const phone =
-        document.getElementById("phone").value.trim();
-
-    const location =
-        document.getElementById("location").value.trim();
-
-    const date =
-        document.getElementById("date").value;
-
-
-    /* Time */
-
-    let finalTime = selectedTime.value;
-
-    if (selectedTime.value === "OTHER") {
-
-        finalTime =
-            otherTime.value.trim();
-
-    }
-
-
-    /* Session type */
-
-    let finalType = selectedType.value;
-
-    if (selectedType.value === "OTHER EVENT") {
-
-        finalType =
-            otherEvent.value.trim();
-
-    }
+        if (!selectedPayment) {
+            alert("Please select a payment method.");
+            return;
+        }
 
 
-    /* ================= FORMAT DATE ================= */
+        /* =========================
+           FORMAT DATE
+        ========================= */
 
-    let formattedDate = date;
+        const selectedDate = new Date(date + "T12:00:00");
 
-    if (date) {
-
-        const dateObject = new Date(date + "T00:00:00");
-
-        formattedDate = dateObject.toLocaleDateString(
+        const formattedDate = selectedDate.toLocaleDateString(
             "en-US",
             {
                 weekday: "long",
@@ -320,67 +244,53 @@ bookingForm.addEventListener("submit", function(event) {
             }
         );
 
-    }
+
+        /* =========================
+           FINAL VALUES
+        ========================= */
+
+        const finalTime =
+            selectedTime === "OTHER"
+                ? otherTimeInput.value.trim()
+                : selectedTime;
+
+        const finalSession =
+            selectedSession === "OTHER EVENT"
+                ? `OTHER EVENT - ${otherEventInput.value.trim()}`
+                : selectedSession;
 
 
-    /* ================= WHATSAPP MESSAGE ================= */
+        /* =========================
+           WHATSAPP MESSAGE
+        ========================= */
 
-    const message =
+        const message =
+`📸 CM CREATIVE SHOTS — NEW BOOKING
 
-`📸 *CM CREATIVE SHOTS — NEW BOOKING*
+Full Name: ${fullName}
+Phone Number: ${phone}
+Location: ${location}
+Date: ${formattedDate}
+Time: ${finalTime}
+Session Type: ${finalSession}
+Number of People: ${selectedPeople}
+Payment Method: ${selectedPayment}
 
-━━━━━━━━━━━━━━━━━━━━
-
-👤 *CLIENT INFORMATION*
-
-*Full Name:*
-${name}
-
-*Phone Number:*
-${phone}
-
-*Location:*
-${location}
-
-━━━━━━━━━━━━━━━━━━━━
-
-📅 *BOOKING DETAILS*
-
-*Date:*
-${formattedDate}
-
-*Time:*
-${finalTime}
-
-*Session Type:*
-${finalType}
-
-*Number of People:*
-${selectedPeople.value}
-
-━━━━━━━━━━━━━━━━━━━━
-
-💳 *PAYMENT METHOD*
-
-${selectedPayment.value}
-
-━━━━━━━━━━━━━━━━━━━━
-
-Please contact me to confirm the booking and provide the next steps.
-
-Thank you for choosing *CM CreativeShots*. 📸`;
+I have read and agree to the CM Creative Shots booking policy.`;
 
 
-    /* ================= WHATSAPP ================= */
+        const whatsappNumber = "59995254792";
 
-    const whatsappNumber = "59995254792";
-
-    const whatsappURL =
-        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        const whatsappURL =
+            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 
-    /* Open WhatsApp */
+        /* =========================
+           OPEN WHATSAPP
+        ========================= */
 
-    window.open(whatsappURL, "_blank");
+        window.open(whatsappURL, "_blank");
+
+    });
 
 });
